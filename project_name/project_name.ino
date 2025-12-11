@@ -1,13 +1,13 @@
 #include "Application.h"
 
-#include "DHT.h" //bilbliotheque du capteur de temperature et d'humidité
+#include "DHT.h" //DHT sensor library & Adafruit Unified Sensor: bilbliotheque du capteur de temperature et d'humidité
 #define DHTPIN 0 // pin D2 sur la groove base shield
 #define DHTTYPE DHT11 //modèle du capteur de temperature/humidité
 DHT dht(DHTPIN, DHTTYPE);
 
 Application myApplication;
 
-void setup() 
+void setup()
 {
   // put your setup code here, to run once:
   
@@ -16,7 +16,7 @@ void setup()
   dht.begin();
 }
 
-void loop() 
+void loop()
 {
   // put your main code here, to run repeatedly:
   

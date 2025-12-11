@@ -6,22 +6,27 @@
 #ifndef APPLICATION_H_
 #define APPLICATION_H_
 
+#include "led.h"
+
 /**
   * @class Application
   * @brief Classe Application 
-*/    
+*/
 class Application
 {
+  private :
+    Led* myLed;
+
   public :
     /**
      * @fn Application();
      * @brief Constructeur par defaut
-    */    
+    */
     Application();
     /**
      * @fn Application();
      * @brief Destructeur
-    */    
+    */
     ~Application();    
     /**
      * @fn void init(void)

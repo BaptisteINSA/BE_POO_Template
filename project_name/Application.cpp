@@ -5,28 +5,27 @@
  *********************************************************************/
 #include "Application.h"
 
-
 Application::Application()
 {
-  // Code
-  ; 
+  myLed = nullptr;
 }
-  
+
 Application::~Application()
 {
-  // Code
-  ;
-}  
+  if (myLed != nullptr)
+  {
+    delete myLed;
+  }
+}
 
 void Application::init(void)
 {
-  // Code
-    ;
+  myLed = new Led(LED_BUILTIN);
+  myLed->init();
 }
-
 
 void Application::run(void)
 {
-  // Code
-    ;
+  myLed->toggle();
+  delay(500);
 }

@@ -7,6 +7,10 @@
 #define APPLICATION_H_
 
 #include "led.h"
+#include "ParticulateSensor.h"
+#include "TempHumSensor.h"
+#include "GasSensor.h"
+#include "OledScreen.h"
 
 /**
   * @class Application
@@ -16,6 +20,10 @@ class Application
 {
   private :
     Led* myLed;
+    ParticulateSensor* _pmSensor;
+    TempHumSensor* _dhtSensor;
+    GasSensor* _gasSensor;
+    OledScreen* _screen;
 
   public :
     /**
@@ -39,4 +47,5 @@ class Application
     */
     void run(void);
 };
+
 #endif

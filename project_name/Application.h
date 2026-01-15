@@ -20,10 +20,10 @@ class Application
 {
   private :
     Led* myLed;
-    ParticulateSensor* _pmSensor;
-    TempHumSensor* _dhtSensor;
-    GasSensor* _gasSensor;
-    OledScreen* _screen;
+    ParticulateSensor* pmSensor;
+    TempHumSensor* dhtSensor;
+    GasSensor* gasSensor;
+    OledScreen* screen;
 
   public :
     /**

@@ -8,18 +8,20 @@
 
 #include "module.h"
 #include <Seeed_HM330X.h>
+#include <vector> // for STL 
+
+using namespace std;
 
 class ParticulateSensor : public Module
 {
   private:
     HM330X _sensor;
-    uint8_t _buf[30];
-    uint16_t _pm1;
-    uint16_t _pm2_5;
-    uint16_t _pm10;
+    vector<uint8_t> buffer;
+    uint16_t pm1;
+    uint16_t pm2_5;
+    uint16_t pm10;
 
-    // Helper to extract data from buffer
-    uint16_t readU16(const uint8_t *data, uint8_t i);
+    uint16_t readU16(int index);
 
   public:
     ParticulateSensor(); // I2C, no specific pin needed

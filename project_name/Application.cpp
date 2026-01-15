@@ -6,17 +6,17 @@
 #include "Application.h"
 #include <Wire.h>
 
-#define DHTPIN  0      // D2 on Groove shield
+#define DHTPIN 0 // D2 on Groove shield
 #define DHTTYPE DHT11
-#define GASPIN  A0     // Analog pin for gas
+#define GASPIN A0 // Analog pin for gas
 
 Application::Application()
 {
     myLed = nullptr;
-    pmSensor  = nullptr;
+    pmSensor = nullptr;
     dhtSensor = nullptr;
     gasSensor = nullptr;
-    screen    = nullptr;
+    screen = nullptr;
 }
 
 Application::~Application()

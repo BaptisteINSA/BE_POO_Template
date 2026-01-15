@@ -5,7 +5,7 @@
  *********************************************************************/
 #include "Led.h"
 
-Led::Led(int pin) : Module(pin), _state(false) {}
+Led::Led(int pin) : Module(pin), state(false) {}
 
 Led::~Led()
 {
@@ -14,25 +14,26 @@ Led::~Led()
 
 void Led::init()
 {
-    pinMode(_pin, OUTPUT);
+    pinMode(pin, OUTPUT);
     off();
+    status = true;
 }
 
 void Led::on()
 {
-    digitalWrite(_pin, HIGH);
-    _state = true;
+    digitalWrite(pin, HIGH);
+    state = true;
 }
 
 void Led::off()
 {
-    digitalWrite(_pin, LOW);
-    _state = false;
+    digitalWrite(pin, LOW);
+    state = false;
 }
 
 void Led::toggle()
 {
-    if (_state) {
+    if (state) {
         off();
     } else {
         on();

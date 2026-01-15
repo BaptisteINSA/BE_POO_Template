@@ -1,6 +1,6 @@
 # BE_POO_Template
-Projet de base pour Ardouino
 
+board: NodeMCU 1.0 (ESP-12E Module)
 
 DHT11: Capteur de Température et d'Humidité
 

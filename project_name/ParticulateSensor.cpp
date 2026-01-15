@@ -5,47 +5,50 @@
  *********************************************************************/
 #include "ParticulateSensor.h"
 
-ParticulateSensor::ParticulateSensor() : Module(-1), _pm1(0), _pm2_5(0), _pm10(0) {}
+ParticulateSensor::ParticulateSensor() : Module(-1), pm1(0), pm2_5(0), pm10(0) {
+    buffer.resize(30);
+}
 
 ParticulateSensor::~ParticulateSensor() {}
 
 void ParticulateSensor::init()
 {
-    // Sensor init requires Wire to be started externally or internally
     if (_sensor.init()) {
+        status = false;
         Serial.println("HM330X init failed!");
     }
+    status = true;
 }
 
-uint16_t ParticulateSensor::readU16(const uint8_t *data, uint8_t i)
+uint16_t ParticulateSensor::readU16(int index)
 {
-    return ((uint16_t)data[i * 2] << 8) | data[i * 2 + 1];
+    return ((uint16_t)buffer[index * 2] << 8) | buffer[index * 2 + 1];
 }
 
 bool ParticulateSensor::read()
 {
-    if (_sensor.read_sensor_value(_buf, 29)) {
+    if (_sensor.read_sensor_value(buffer.data(), 29)) {
         Serial.println("HM330X read failed!");
         return false;
     }
-    // Parse Atmospheric environment (indices 5, 6, 7) [cite: 5, 6, 7]
-    _pm1   = readU16(_buf, 5);
-    _pm2_5 = readU16(_buf, 6);
-    _pm10  = readU16(_buf, 7);
+    // Parse Atmospheric environment
+    pm1 = readU16(5);
+    pm2_5 = readU16(6);
+    pm10 = readU16(7);
     return true;
 }
 
 uint16_t ParticulateSensor::getPM1() 
 {
-  return _pm1; 
+  return pm1; 
 }
 
 uint16_t ParticulateSensor::getPM2_5() 
 {
-  return _pm2_5;
+  return pm2_5;
 }
 
 uint16_t ParticulateSensor::getPM10()  
 {
-  return _pm10;
+  return pm10;
 }

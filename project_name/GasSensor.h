@@ -11,8 +11,8 @@
 class GasSensor : public Module
 {
   private:
-    float _volts;
-    float _ratio;
+    float volts;
+    float ratio;
 
   public:
     GasSensor(int pin);

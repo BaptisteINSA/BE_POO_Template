@@ -15,28 +15,17 @@
 class Module
 {
   protected:
-    int _pin; // Le pin sur lequel le Module est branché
+    int pin; // Le pin sur lequel le Module est branché
+    bool status; // for use operator
 
   public:
-    /**
-     * @fn Module(int pin)
-     * @brief Constructeur avec le pin
-     */
-    Module(int pin) : _pin(pin) {}
-
-    /**
-     * @fn ~Module()
-     * @brief Destructeur virtuel
-     */
+    Module(int pin) : pin(pin), status(false) {}
     virtual ~Module() {}
-
-    /**
-     * @fn virtual void init()
-     * @brief Méthode virtuelle : chaque Module doit définir son initialisation
-     */
     virtual void init() = 0;
     
-    // virtual void update() {} 
+    operator bool() const { // operator
+        return status;
+    }
 };
 
 #endif

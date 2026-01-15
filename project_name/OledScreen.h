@@ -22,10 +22,7 @@ class OledScreen : public Module
   public:
     OledScreen(int width, int height);
     ~OledScreen();
-
     void init() override;
-    
-    // Updates the display with all relevant data
     void updateInfo(float temp, float hum, uint16_t pm1, uint16_t pm25, uint16_t pm10, float gasRatio);
 };
 

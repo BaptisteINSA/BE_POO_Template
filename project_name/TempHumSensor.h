@@ -21,10 +21,8 @@ class TempHumSensor : public Module
   public:
     TempHumSensor(int pin, uint8_t type);
     ~TempHumSensor();
-
     void init() override;
     void read();
-
     float getTemperature();
     float getHumidity();
     float getHeatIndex();

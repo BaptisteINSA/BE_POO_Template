@@ -20,6 +20,7 @@ TempHumSensor::~TempHumSensor()
 void TempHumSensor::init()
 {
     _dht->begin();
+    status = true;
 }
 
 void TempHumSensor::read()

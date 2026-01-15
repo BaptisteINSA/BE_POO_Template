@@ -17,6 +17,7 @@ class OledScreen : public Module
     Adafruit_SSD1306* _display;
     int _width;
     int _height;
+    String getQualityLabel(uint16_t pm25);
 
   public:
     OledScreen(int width, int height);

@@ -28,11 +28,19 @@ void OledScreen::init()
     _display->display();
 }
 
+String OledScreen::getQualityLabel(uint16_t pm25)
+{
+    // seuils simplifiés OMS/Europe
+    if (pm25 < 15) return "GOOD";      // Air pur
+    if (pm25 < 45) return "FAIR";      // Moyen
+    return "BAD!";                     // Pollué
+}
+
 void OledScreen::updateInfo(float temp, float hum, uint16_t pm1, uint16_t pm25, uint16_t pm10, float gasRatio)
 {
     _display->clearDisplay();
 
-    // --- Line 1: Temp & Humidity ---
+    // Line 1: Temp & Humidity
     _display->setTextSize(1);
     
     _display->setCursor(0, 0);
@@ -41,28 +49,30 @@ void OledScreen::updateInfo(float temp, float hum, uint16_t pm1, uint16_t pm25, 
     _display->print((char)247); // °
     _display->print("C");
 
-    _display->setCursor(64, 0); // Middle of screen
+    _display->setCursor(64, 0);
     _display->print("H:");
     _display->print(hum, 0);
     _display->print("%");
 
-    // --- Line 2: Particles ---
-    _display->setCursor(0, 8);
-    _display->print("P1:");
-    _display->print(pm1);
-
-    _display->setCursor(45, 8);
-    _display->print("P2.5:");
+    // Line 2: Particles (PM2.5 est le plus important)
+    _display->setCursor(0, 12);
+    _display->print("PM2.5: ");
     _display->print(pm25);
+    _display->print(" ug");
 
-    _display->setCursor(95, 8);
-    _display->print("P10:");
-    _display->print(pm10);
+    // Affichage de la qualité globale à droite
+    String quality = getQualityLabel(pm25);
+    _display->setCursor(80, 12);
+    _display->print(quality);
 
-    // --- Line 3: Gas Ratio ---
-    _display->setCursor(0, 16);
-    _display->print("Gas R:");
-    _display->print(gasRatio);
+    // --Line 3: Gas Ratio
+    _display->setCursor(0, 24);
+    _display->print("Gas: ");
+    if (gasRatio < 1.0) { 
+        _display->print("DETECTED!"); 
+    } else {
+        _display->print("Safe");
+    }
 
     _display->display();
 }

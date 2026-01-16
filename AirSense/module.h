@@ -8,10 +8,6 @@
 
 #include <Arduino.h>
 
-/**
- * @class Module
- * @brief Classe représentant un composant connecté
- */
 class Module
 {
   protected:

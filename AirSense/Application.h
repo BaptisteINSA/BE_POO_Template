@@ -12,10 +12,6 @@
 #include "GasSensor.h"
 #include "OledScreen.h"
 
-/**
-  * @class Application
-  * @brief Classe Application 
-*/
 class Application
 {
   private :

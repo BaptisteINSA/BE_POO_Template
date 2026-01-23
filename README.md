@@ -1,6 +1,7 @@
 # Projet AirSense
 
 Jules Augereau
+
 Baptiste Peyrot
 
 Ce projet est une station de mesure de la qualité de l'air réalisée sur un microcontrôleur ESP8266. Elle affiche la température, l'humidité, le niveau de particules fines et la présence de gaz sur un écran OLED.
